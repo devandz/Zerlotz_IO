@@ -1,0 +1,250 @@
+body {  
+  margin: 0;  
+  font-family: sans-serif;  
+  background-color: #336;  
+  color: white;  
+
+
+.header-banner {
+  text-align: center;
+  padding: 20px;
+}
+
+.header-banner img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+}
+
+.popular-games {
+  padding: 20px;
+  text-align: center;
+}
+
+.games-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.game-item {
+  text-decoration: none;
+  color: white;
+}
+
+.game-item img {
+  width: 220px;
+  border-radius: 10px;
+}
+
+.game-item p {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.intro {
+  padding: 20px;
+  text-align: center;
+}
+
+.intro h1 {
+  font-size: 28px;
+}
+
+.intro p {
+  max-width: 600px;
+  margin: 10px auto;
+}
+
+.features {
+  padding: 20px;
+  background-color: #99C;
+}
+
+.features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.feature {
+  max-width: 250px;
+}
+
+.footer {
+  background-color: #fffa00;
+  color: black;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer a {
+  color: blue;
+  text-decoration: underline;
+}
+
+.banner-slider img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.banner-slider {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+}
+
+.game-item {
+  text-decoration: none;
+  color: white;
+  background-color: #2a123e; /* ungu gelap ala Codashop */
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* efek bayangan */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 220px; /* biar konsisten sama ukuran gambar */
+}
+
+.game-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+}
+
+.game-item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.riwayat-transaksi {
+  margin: 2rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+
+.riwayat-transaksi h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.transaksi-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.riwayat-transaksi {
+  margin: 2rem;
+  padding: 1rem;
+  background: #336;
+  border-radius: 10px;
+}
+
+.riwayat-transaksi h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.transaksi-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.no-transaksi {
+  font-style: italic;
+  color: #666;
+  font-size: 0.9rem;
+}
+.riwayat-transaksi {
+  margin: 30px;
+  padding: 20px;
+  background-color: #336;
+  border-radius: 12px;
+}
+.riwayat-item {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+.riwayat-item:last-child {
+  border-bottom: none;
+}
+.no-transaksi {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+}
+.status.sukses {
+  color: green;
+}
+.status.pending {
+  color: orange;
+}
+.status.gagal {
+  color: red;
+}
+.transaksi-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.status-sukses {
+  border-left: 5px solid #4CAF50;
+}
+
+.status-pending {
+  border-left: 5px solid #FFC107;
+}
+
+.form-transaksi {
+  padding: 20px;
+  background: #fffbe7;
+  border: 1px solid #eee;
+  margin: 20px;
+  border-radius: 10px;
+}
+.form-transaksi input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.form-transaksi button {
+  padding: 10px 20px;
+  background-color: #0066ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.update-status {
+  padding: 20px;
+  background: #e0f7fa;
+  border: 1px solid #b2ebf2;
+  margin: 20px;
+  border-radius: 10px;
+}
+.update-status input, .update-status select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.update-status button {
+  padding: 10px 20px;
+  background-color: #009688;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
