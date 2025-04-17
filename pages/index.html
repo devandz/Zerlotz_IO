@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Top Up Game Murah</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <script src="../assets/script.js" defer></script>
+</head>
+<script>
+  // Ambil dan tampilkan riwayat transaksi
+  fetch('../backend/storage/data.json')
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById('riwayat-container');
+      if (data.length === 0) {
+        container.innerHTML = '<p>Belum ada transaksi.</p>';
+        return;
+      }
+
+      data.reverse().forEach(transaksi => {
+        const statusClass = transaksi.status === "sukses" ? "status-sukses" : "status-pending";
+        const item = `
+          <div class="transaksi-item ${statusClass}">
+            <p><strong>Nama:</strong> ${transaksi.nama}</p>
+            <p><strong>Game:</strong> ${transaksi.game}</p>
+            <p><strong>Jumlah:</strong> ${transaksi.jumlah}</p>
+            <p><strong>Metode:</strong> ${transaksi.metode}</p>
+            <p><strong>Status:</strong> ${transaksi.status}</p>
+          </div>
+        `;
+        container.innerHTML += item;
+      });
+    })
+    .catch(error => {
+      console.error('Gagal memuat riwayat transaksi:', error);
+    });
+</script>
+<body>  
+<!-- Logo (tanpa background abu-abu) -->
+<div style="text-align: center; padding: 20px 0;">
+  <img src="../assets/images/zerlotz-logo.png" alt="Zerlötz IO" style="height: 100px;" />
+</div>
+<!-- Banner (tanpa background apapun) -->
+<div style="text-align: center;">
+  <img src="../assets/images/banner.jpg" alt="Banner Zerlötz" style="width: 100%;" />
+</div>
+  <!-- Game Populer -->
+  <section class="popular-games">
+    <h2>Game Populer</h2>
+    <div class="games-list">
+      <a href="ml.html" class="game-item">
+        <img src="../assets/images/ml.jpg" alt="ML">
+        <p>Mobile Legends</p>
+      </a>
+      <a href="ff.html" class="game-item">
+        <img src="../assets/images/ff.jpg" alt="FF">
+        <p>Free Fire</p>
+      </a>
+    </div>
+  </section>
+  
+  <!-- Form Tambah Transaksi -->
+<section class="form-transaksi">
+  <h2>Tambah Transaksi</h2>
+  <form action="../backend/tambah_transaksi.php" method="POST">
+    <input type="text" name="nickname" placeholder="Nickname" required />
+    <input type="text" name="game" placeholder="Game" required />
+    <input type="text" name="item" placeholder="Item yang dibeli" required />
+    <input type="text" name="metode" placeholder="Metode Pembayaran" required />
+    <button type="submit">Tambah</button>
+  </form>
+</section>
+
+  <!-- Riwayat Transaksi -->
+  <section class="riwayat-transaksi">
+    <h2>Riwayat Transaksimu</h2>
+    <div id="riwayat-container"></div>
+  </section>
+  
+  <!-- Form Update Status -->
+<section class="update-status">
+  <h2>Update Status Transaksi</h2>
+  <form action="../backend/update_status.php" method="POST">
+    <input type="text" name="nickname" placeholder="Nickname" required />
+    <select name="status">
+      <option value="pending">Pending</option>
+      <option value="sukses">Sukses</option>
+    </select>
+    <button type="submit">Update Status</button>
+  </form>
+</section>
+
+  <!-- Judul dan Deskripsi -->
+  <section class="intro">
+    <h1>Top Up Game Termurah, Tercepat, Terpercaya</h1>
+    <p>
+      Setiap bulannya, ratusan gamers mengandalkan kami untuk top-up game kesayangan mereka secara cepat dan aman.
+    </p>
+  </section>
+
+  <!-- Fitur -->
+  <section class="features">
+    <div class="features-grid">
+      <div class="feature">
+        <h3>Bayar dalam hitungan detik</h3>
+        <p>Proses instan hanya dalam beberapa detik setelah pembayaran.</p>
+      </div>
+      <div class="feature">
+        <h3>Pengiriman Instan</h3>
+        <p>Diamond langsung masuk ke akun kamu tanpa delay.</p>
+      </div>
+      <div class="feature">
+        <h3>Metode Pembayaran Lengkap</h3>
+        <p>Bisa bayar pakai QRIS, e-wallet, atau transfer bank.</p>
+      </div>
+      <div class="feature">
+        <h3>Promo Menarik</h3>
+        <p>Dapetin promo dan diskon menarik setiap saat.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Top Up Game Murah - by ZerlotzStore</p>
+    <p><a href="https://t.me/+ZlAKu5syBt5kNjU9">Hubungi Kami</a></p>
+  </footer>
+
+  <!-- Tombol Cek Admin sebagai ikon -->
+  <img 
+    src="../assets/images/admin-icon.png" 
+    alt="Cek Admin" 
+    onclick="cekAdmin()" 
+    style="
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      z-index: 9999;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    "
+    onmouseover="this.style.opacity='1'" 
+    onmouseout="this.style.opacity='0.7'"
+  />

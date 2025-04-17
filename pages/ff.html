@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Up Free Fire</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #336;
+      color: #fff;
+    }
+    .banner {
+      width: 100%;
+    }
+    .container {
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      margin-top: 5px;
+    }
+    .nominal, .payment {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+    button {
+      cursor: pointer;
+    }
+    .nominal button, .payment button {
+      background-color: #1f2333;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 12px;
+    }
+    .nominal button.selected, .payment button.selected {
+      background-color: #ffc107;
+      color: #000;
+      font-weight: bold;
+    }
+    .btn-submit {
+      background-color: #ffc107;
+      border: none;
+      padding: 15px;
+      width: 100%;
+      border-radius: 15px;
+      font-size: 18px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 12px;
+      color: #888;
+    }
+
+    /* QR section */
+    .qris-container {
+      position: fixed;
+      bottom: -100%;
+      left: 0;
+      right: 0;
+      background-color: #1f2333;
+      border-radius: 20px 20px 0 0;
+      padding: 20px;
+      text-align: center;
+      transition: bottom 0.5s ease-in-out;
+      z-index: 999;
+    }
+    .qris-container.active {
+      bottom: 0;
+    }
+    .qris-img {
+      width: 250px;
+      height: auto;
+      margin: 20px 0;
+    }
+    .lanjutkan-btn {
+      margin-top: 10px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ffc107;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* Centang animasi */
+    .centang-anim {
+      display: none;
+      text-align: center;
+    }
+    .centang-anim.active {
+      display: block;
+    }
+    .centang-anim img {
+      width: 120px;
+      margin: 30px auto;
+    }
+  </style>
+</head>
+<body>
+  <img src="../assets/images/bannerff.jpg" class="banner" alt="Banner" />
+  <div class="container">
+    <h2>1. Masukkan Player ID</h2>
+    <input type="text" id="playerId" placeholder="Masukkan Player ID" />
+<div class="nominal">
+  <button data-value="5 Diamonds Rp. 1000">5 Diamonds<br>Rp. 1.000</button>
+  <button data-value="12 Diamonds Rp. 3000">12 Diamonds<br>Rp. 3.000</button>
+  <button data-value="50 Diamonds Rp. 7000">50 Diamonds<br>Rp. 7.000</button>
+  <button data-value="70 Diamonds Rp. 10000">70 Diamonds<br>Rp. 10.000</button>
+  <button data-value="100 Diamonds Rp. 14000">100 Diamonds<br>Rp. 14.000</button>
+  <button data-value="140 Diamonds Rp. 19000">140 Diamonds<br>Rp. 19.000</button>
+  <button data-value="210 Diamonds Rp. 28000">210 Diamonds<br>Rp. 28.000</button>
+  <button data-value="355 Diamonds Rp. 46000">355 Diamonds<br>Rp. 46.000</button>
+  <button data-value="500 Diamonds Rp. 71000">500 Diamonds<br>Rp. 71.000</button>
+  <button data-value="720 Diamonds Rp. 92000">720 Diamonds<br>Rp. 92.000</button>
+  <button data-value="1000 Diamonds Rp. 130000">1000 Diamonds<br>Rp. 130.000</button>
+  <button data-value="1450 Diamonds Rp. 185000">1450 Diamonds<br>Rp. 185.000</button>
+  <button data-value="2180 Diamonds Rp. 278000">2180 Diamonds<br>Rp. 278.000</button>
+  <button data-value="3640 Diamonds Rp. 460000">3640 Diamonds<br>Rp. 460.000</button>
+  <button data-value="Membership Level Up Pass Rp. 16000">Membership Level Up Pass<br>Rp. 16.000</button>
+  <button data-value="Membership Mingguan 50 DM Rp. 29000">Membership Mingguan 50 DM<br>Rp. 29.000</button>
+  <button data-value="Membership Bulanan 60 DM Rp. 86000">Membership Bulanan 60 DM<br>Rp. 86.000</button>
+</div>
+    
+<h2>3. Pilih Pembayaran</h2>
+<div class="payment">
+  <button data-pay="Dana"><img src="../assets/images/dana.png" width="30" /><br>Dana</button>
+  <button data-pay="QRIS"><img src="../assets/images/qris.png" width="30" /><br>QRIS</button>
+  <button data-pay="OVO"><img src="../assets/images/ovo.png" width="30" /><br>OVO</button>
+  <button data-pay="GoPay"><img src="../assets/images/gopay.png" width="30" /><br>GoPay</button>
+</div>
+
+    <button class="btn-submit" onclick="showQR()">Beli Sekarang</button>
+
+    <div class="footer">
+      © 2025 Top Up Game Murah.
+    </div>
+  </div>
+
+  <!-- QR Section -->
+  <div class="qris-container" id="qrisBox">
+    <p>Kirim lewat scan QRIS ini, lalu kirim bukti pembayaran via WA admin</p>
+    <img src="../assets/images/qris-code.png" class="qris-img" alt="QRIS" />
+    <button class="lanjutkan-btn" onclick="lanjutkan()">Lanjutkan</button>
+  </div>
+
+  <!-- Centang anim -->
+  <div class="centang-anim" id="centangBox">
+    <img src="../assets/images/check.gif" alt="Success" />
+    <p>Transaksi berhasil! Mengalihkan ke WhatsApp...</p>
+  </div>
+
+  <script>
+    let nominal = '', price = '', payment = '';
+
+    document.querySelectorAll('.nominal button').forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('.nominal button').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        nominal = btn.dataset.value;
+        price = btn.dataset.price;
+      };
+    });
+
+    document.querySelectorAll('.payment button').forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('.payment button').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        payment = btn.dataset.pay;
+      };
+    });
+
+function showQR() {
+  const id = document.getElementById('playerId').value;
+  if (!id || !nominal || !payment) {
+    alert('Lengkapi semua data dulu ya!');
+    return;
+  }
+
+  // Kalau payment-nya termasuk metode QR, munculin QR box
+  const metodeQR = ["QRIS", "GoPay", "OVO", "DANA"];
+  if (metodeQR.includes(payment)) {
+    document.getElementById('qrisBox').classList.add('active');
+  } else {
+    kirimWA();
+  }
+}
+
+    function lanjutkan() {
+      document.getElementById('qrisBox').classList.remove('active');
+      document.getElementById('centangBox').classList.add('active');
+
+      setTimeout(() => {
+        kirimWA();
+      }, 2000);
+    }
+
+    function kirimWA() {
+      const id = document.getElementById('playerId').value;
+      const pesan = `Nama game: Free Fire\nId: ${id}\nPesanan: ${nominal}\nHarga: ${price}\nBukti send: `;
+      const waLink = `https://wa.me/6281907722701?text=${encodeURIComponent(pesan)}`;
+      window.open(waLink, '_blank');
+    }
+  </script>
+</body>
+</html>
